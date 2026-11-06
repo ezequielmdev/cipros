@@ -363,23 +363,7 @@ function renderConvenios() {
 function initConveniosSearch() {
   const searchInput = document.getElementById('convenios-search-input');
   const container = document.getElementById('convenios-grid-container');
-  const toggleQuadroBtn = document.getElementById('btn-toggle-quadro');
-  const quadroWrap = document.getElementById('quadro-oficial-wrap');
   const data = (typeof CIPROS_DATA !== 'undefined' ? CIPROS_DATA : window.CIPROS_DATA);
-
-  // Toggle do Quadro Oficial Completo (Imagem 1)
-  if (toggleQuadroBtn && quadroWrap) {
-    toggleQuadroBtn.addEventListener('click', () => {
-      const isHidden = quadroWrap.style.display === 'none' || getComputedStyle(quadroWrap).display === 'none';
-      quadroWrap.style.display = isHidden ? 'block' : 'none';
-      toggleQuadroBtn.innerHTML = isHidden 
-        ? '<i class="fa-solid fa-xmark"></i> Ocultar Quadro Oficial' 
-        : '<i class="fa-regular fa-image"></i> Ver Imagem do Quadro Oficial';
-      if (isHidden) {
-        quadroWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
-    });
-  }
 
   if (!searchInput || !container || !data || !data.convenios) return;
 
