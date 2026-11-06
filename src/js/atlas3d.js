@@ -714,8 +714,7 @@
     renderStageUI(container);
     setupEvents();
     loadView(State.currentRegion, State.currentSide);
-    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 820;
-    selectStructure(State.selectedStructure, !isMobile);
+    selectStructure(State.selectedStructure, false);
   }
 
   // Renderiza o Palco Completo com Controles de Rotação 360°
@@ -857,13 +856,31 @@
       pin.innerHTML = `
         <div class="ca-pin-beacon"></div>
         <div class="ca-pin-core"></div>
-        <div class="ca-pin-tag">${spot.label}</div>
+        <div class="ca-pin-tag">
+          <span class="ca-tag-name">${spot.label}</span>
+          <span class="ca-tag-action" role="button" tabindex="0">Sobre esta parte <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
       `;
 
+      // Clicar na bolinha apenas seleciona o ponto (NÃO abre automaticamente o laudo, evitando ser chato)
       pin.addEventListener('click', (e) => {
         e.stopPropagation();
-        selectStructure(spot.id, true);
+        if (State.selectedStructure === spot.id) {
+          // Se já está selecionado e o usuário toca novamente, abre o laudo completo
+          selectStructure(spot.id, true);
+        } else {
+          selectStructure(spot.id, false);
+        }
       });
+
+      // Clicar no rótulo ou no botão "Sobre esta parte" abre o laudo completo
+      const tagEl = pin.querySelector('.ca-pin-tag');
+      if (tagEl) {
+        tagEl.addEventListener('click', (e) => {
+          e.stopPropagation();
+          selectStructure(spot.id, true);
+        });
+      }
 
       layer.appendChild(pin);
     });
@@ -872,7 +889,7 @@
   }
 
   // Seleciona uma estrutura anatômica e abre o Prontuário Lateral
-  function selectStructure(structureId, shouldOpenPanel = true) {
+  function selectStructure(structureId, shouldOpenPanel = false) {
     const item = CLINICAL_DATABASE[structureId];
     if (!item) return;
 
@@ -903,7 +920,21 @@
     if (!hint) return;
     const item = CLINICAL_DATABASE[State.selectedStructure];
     const name = item ? item.nome : 'Estrutura Anatômica';
-    hint.innerHTML = `<i class="fa-solid fa-bullseye"></i> <span class="ca-hint-full">Estrutura: <strong>${name}</strong> • Toque para diagnóstico</span><span class="ca-hint-short"><strong>${name}</strong></span>`;
+    hint.innerHTML = `
+      <span class="ca-hint-label">
+        <i class="fa-solid fa-circle-dot"></i> <span class="ca-hint-full">${name}</span><span class="ca-hint-short">${name}</span>
+      </span>
+      <button type="button" class="ca-hint-btn-about" id="btn-hint-about">
+        Sobre esta parte <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    `;
+    const btnAbout = hint.querySelector('#btn-hint-about');
+    if (btnAbout) {
+      btnAbout.addEventListener('click', (e) => {
+        e.stopPropagation();
+        selectStructure(State.selectedStructure, true);
+      });
+    }
   }
 
   // Preenche o Prontuário Anatômico Lateral (Inspector Panel)
@@ -1009,7 +1040,7 @@
 
     // Pan / Arrastar com Mouse + Detecção de Swipe para Girar
     viewport.addEventListener('mousedown', (e) => {
-      if (e.target.closest('.ca-pin')) return;
+      if (e.target.closest('.ca-pin') || e.target.closest('.ca-pin-tag') || e.target.closest('.ca-hint-badge')) return;
       State.isDragging = true;
       dragDeltaX = 0;
       State.dragStart = { x: e.clientX - State.pan.x, y: e.clientY - State.pan.y };
@@ -1043,6 +1074,9 @@
     // Suporte a Toque em Celular com Detecção de Swipe para Girar
     let touchStartX = 0;
     viewport.addEventListener('touchstart', (e) => {
+      if (e.target.closest('.ca-pin') || e.target.closest('.ca-pin-tag') || e.target.closest('.ca-hint-badge')) {
+        return;
+      }
       if (e.touches.length === 1) {
         State.isDragging = true;
         touchStartX = e.touches[0].clientX;
