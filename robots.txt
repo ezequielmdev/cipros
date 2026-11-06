@@ -1,0 +1,57 @@
+# ========================================================
+# CIPROS Fisioterapia e Fisiatria - robots.txt
+# Regras de Indexação, Proteção Anti-Scraping e Bloqueio de IA
+# ========================================================
+
+# 1. Permissão Total para Mecanismos de Busca Legítimos (SEO Oficial)
+User-agent: Googlebot
+User-agent: Googlebot-Image
+User-agent: Bingbot
+User-agent: Slurp
+User-agent: DuckDuckBot
+User-agent: Baiduspider
+User-agent: YandexBot
+Allow: /
+Allow: /assets/
+Allow: /css/
+Allow: /js/
+
+# 2. Bloqueio Estrito de Ferramentas de Clonagem e Raspagem Automatizada (Scrapers)
+User-agent: Scrapy
+User-agent: curl
+User-agent: Wget
+User-agent: PycURL
+User-agent: python-requests
+User-agent: aiohttp
+User-agent: HTTrack
+User-agent: WebReaper
+User-agent: Teleport
+User-agent: WebCopier
+User-agent: SiteSucker
+Disallow: /
+
+# 3. Bloqueio de Robôs de Extração e Clonagem por Inteligência Artificial (AI Scrapers)
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: CCBot
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+User-agent: Claude-Web
+User-agent: PerplexityBot
+User-agent: Bytespider
+User-agent: Diffbot
+User-agent: FacebookBot
+User-agent: Applebot-Extended
+User-agent: Amazonbot
+User-agent: Cohere-ai
+User-agent: Omgilibot
+Disallow: /
+
+# 4. Regra Geral para Outros Rastreadores
+User-agent: *
+Allow: /
+Disallow: /scripts/
+Disallow: /.git/
+
+# Taxa de rastreamento segura para evitar sobrecarga
+Crawl-delay: 5

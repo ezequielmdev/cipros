@@ -19,8 +19,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
   
+  <!-- Proteções de Segurança & Referrer (Anti-Phishing / Anti-Sniff) -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
   <!-- Estilos Customizados CIPROS (Inspirado no MedFisio) -->
   <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Camada de Segurança e Agente LGPD -->
+  <link rel="stylesheet" href="css/security-lgpd.css">
 </head>
 <body id="topo">
 
@@ -815,6 +822,10 @@
             <i class="fa-solid fa-paper-plane"></i> Enviar Mensagem para a Recepção
           </button>
 
+          <p class="form-lgpd-note" style="font-size: 12px; color: #64748b; text-align: center; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 6px;">
+            <i class="fa-solid fa-lock" style="color: #0284c7;"></i> Seus dados estão seguros e protegidos pela LGPD (Lei 13.709/2018) para finalidade exclusiva de saúde.
+          </p>
+
           <!-- Alerta de Feedback -->
           <div id="form-feedback-alert" class="form-feedback-alert"></div>
         </form>
@@ -905,6 +916,11 @@
       <!-- Barra Inferior de Direitos -->
       <div class="footer-bottom-bar">
         <span>© Copyright 2011 - 2026 CIPROS Centro de Reabilitação Ltda. Todos os direitos reservados.</span>
+        <div class="footer-lgpd-links">
+          <a href="#" id="footer-link-lgpd-policy"><i class="fa-solid fa-shield-halved"></i> Política de Privacidade (LGPD)</a>
+          <span>•</span>
+          <a href="#" id="footer-link-lgpd-cookies"><i class="fa-solid fa-cookie-bite"></i> Preferências de Cookies</a>
+        </div>
         <span>Responsabilidade Técnica em Fisioterapia e Fisiatria • CREFITO-5</span>
       </div>
 
@@ -925,5 +941,9 @@
   <script src="js/data.js"></script>
   <script src="js/atlas3d.js"></script>
   <script src="js/main.js"></script>
+
+  <!-- Camada Ativa de Segurança e Agente LGPD -->
+  <script src="js/security.js"></script>
+  <script src="js/lgpd.js"></script>
 </body>
 </html>
