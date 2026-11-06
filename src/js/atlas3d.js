@@ -714,7 +714,8 @@
     renderStageUI(container);
     setupEvents();
     loadView(State.currentRegion, State.currentSide);
-    selectStructure(State.selectedStructure);
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 820;
+    selectStructure(State.selectedStructure, !isMobile);
   }
 
   // Renderiza o Palco Completo com Controles de Rotação 360°
@@ -838,8 +839,9 @@
         return;
       }
 
+      const isRightSide = spot.x > 50;
       const pin = document.createElement('div');
-      pin.className = `ca-pin ${spot.id === State.selectedStructure ? 'active' : ''} pin-sistema-${spot.sistema}`;
+      pin.className = `ca-pin ${spot.id === State.selectedStructure ? 'active' : ''} pin-sistema-${spot.sistema} ${isRightSide ? 'pin-align-right' : 'pin-align-left'}`;
       pin.style.left = `${spot.x}%`;
       pin.style.top = `${spot.y}%`;
       pin.setAttribute('data-id', spot.id);
@@ -853,7 +855,7 @@
 
       pin.addEventListener('click', (e) => {
         e.stopPropagation();
-        selectStructure(spot.id);
+        selectStructure(spot.id, true);
       });
 
       layer.appendChild(pin);
@@ -861,7 +863,7 @@
   }
 
   // Seleciona uma estrutura anatômica e abre o Prontuário Lateral
-  function selectStructure(structureId) {
+  function selectStructure(structureId, shouldOpenPanel = true) {
     const item = CLINICAL_DATABASE[structureId];
     if (!item) return;
 
@@ -882,11 +884,11 @@
     });
 
     // Atualiza o Inspector Panel (Prontuário)
-    updateInspectorPanel(item);
+    updateInspectorPanel(item, shouldOpenPanel);
   }
 
   // Preenche o Prontuário Anatômico Lateral (Inspector Panel)
-  function updateInspectorPanel(item) {
+  function updateInspectorPanel(item, shouldOpenPanel = true) {
     const panel = document.getElementById('atlas-inspector-panel');
     if (!panel) return;
 
@@ -952,7 +954,11 @@
       </div>
     `;
 
-    panel.classList.add('open');
+    if (shouldOpenPanel) {
+      panel.classList.add('open');
+    } else {
+      panel.classList.remove('open');
+    }
 
     // Botão Fechar
     const closeBtn = document.getElementById('btn-close-inspector');
