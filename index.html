@@ -37,46 +37,20 @@
         <img src="assets/logo/cipros_logo.png" alt="CIPROS - Fisioterapia e Fisiatria" class="brand-logo-img">
       </a>
 
-      <!-- Menu de Navegação -->
-      <nav class="site-nav" id="site-nav" aria-label="Navegação Principal">
-        <!-- Topo exclusivo do Menu Mobile -->
-        <div class="mobile-nav-header">
-          <div class="mobile-nav-brand">
-            <img src="assets/logo/cipros_logo.png" alt="CIPROS" class="mobile-nav-logo">
-            <span class="mobile-nav-subtitle">Fisioterapia &amp; Fisiatria</span>
-          </div>
-          <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Fechar menu">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </div>
-
-        <!-- Links Principais -->
-        <div class="mobile-nav-links-wrap">
-          <a href="#topo" class="nav-link active"><i class="fa-solid fa-house"></i> Início</a>
-          <a href="#servicos" class="nav-link"><i class="fa-solid fa-notes-medical"></i> Serviços</a>
-          <a href="#atlas" class="nav-link"><i class="fa-solid fa-cube"></i> Atlas 3D</a>
-          <a href="#estrutura" class="nav-link"><i class="fa-solid fa-hospital"></i> Nossa Clínica</a>
-          <a href="#sobre" class="nav-link"><i class="fa-solid fa-user-doctor"></i> Quem Somos</a>
-          <a href="#convenios" class="nav-link"><i class="fa-solid fa-id-card"></i> Convênios</a>
-          <a href="#faq" class="nav-link"><i class="fa-solid fa-circle-question"></i> Dúvidas</a>
-          <a href="#unidades" class="nav-link"><i class="fa-solid fa-location-dot"></i> Unidades</a>
-          <a href="#contato" class="nav-link"><i class="fa-solid fa-envelope"></i> Contato</a>
-        </div>
-
-        <!-- Rodapé do Menu Mobile com Contatos Rápidos -->
-        <div class="mobile-nav-footer">
-          <a href="https://api.whatsapp.com/send/?phone=555193674766&text=Ol%C3%A1,+gostaria+de+agendar+uma+consulta!" target="_blank" class="mobile-nav-zap-btn" rel="noopener">
-            <i class="fa-brands fa-whatsapp"></i> Agendar pelo WhatsApp
-          </a>
-          <div class="mobile-nav-phones">
-            <a href="tel:555130726262"><i class="fa-solid fa-phone"></i> Porto Alegre: (51) 3072-6262</a>
-            <a href="tel:555130374239"><i class="fa-solid fa-phone"></i> São Leopoldo: (51) 3037-4239</a>
-          </div>
+      <!-- Menu de Navegação Desktop -->
+      <nav class="desktop-nav" aria-label="Navegação Principal Desktop">
+        <div class="desktop-nav-links">
+          <a href="#topo" class="nav-link active">Início</a>
+          <a href="#servicos" class="nav-link">Serviços</a>
+          <a href="#atlas" class="nav-link">Atlas 3D</a>
+          <a href="#estrutura" class="nav-link">Nossa Clínica</a>
+          <a href="#sobre" class="nav-link">Quem Somos</a>
+          <a href="#convenios" class="nav-link">Convênios</a>
+          <a href="#faq" class="nav-link">Dúvidas</a>
+          <a href="#unidades" class="nav-link">Unidades</a>
+          <a href="#contato" class="nav-link">Contato</a>
         </div>
       </nav>
-
-      <!-- Fundo Escurecido ao Abrir Menu Mobile (Backdrop Overlay) -->
-      <div class="site-nav-overlay" id="site-nav-overlay"></div>
 
       <!-- Botão de Ação / WhatsApp no Topo (Desktop) -->
       <a href="https://api.whatsapp.com/send/?phone=555193674766&text=Ol%C3%A1,+gostaria+de+agendar+uma+consulta!" target="_blank" class="header-cta-btn" rel="noopener">
@@ -89,12 +63,51 @@
           <i class="fa-brands fa-whatsapp"></i>
           <span>Agendar</span>
         </a>
-        <button class="menu-toggle-btn" id="menu-toggle" aria-label="Abrir menu de navegação">
+        <button class="menu-toggle-btn" id="menu-toggle" aria-label="Abrir menu de navegação" type="button" aria-expanded="false" aria-controls="mobile-nav-drawer">
           <i class="fa-solid fa-bars"></i>
         </button>
       </div>
     </div>
   </header>
+
+  <!-- Fundo Escurecido & Menu Mobile Drawer (Fora do header para compatibilidade perfeita no iOS/Safari) -->
+  <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+  <aside class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Menu Mobile" aria-hidden="true">
+    <!-- Topo exclusivo do Menu Mobile -->
+    <div class="mobile-nav-header">
+      <div class="mobile-nav-brand">
+        <img src="assets/logo/cipros_logo.png" alt="CIPROS" class="mobile-nav-logo">
+        <span class="mobile-nav-subtitle">Fisioterapia &amp; Fisiatria</span>
+      </div>
+      <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Fechar menu" type="button">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Links Principais -->
+    <div class="mobile-nav-links-wrap">
+      <a href="#topo" class="nav-link active"><i class="fa-solid fa-house"></i> Início</a>
+      <a href="#servicos" class="nav-link"><i class="fa-solid fa-notes-medical"></i> Serviços</a>
+      <a href="#atlas" class="nav-link"><i class="fa-solid fa-cube"></i> Atlas 3D</a>
+      <a href="#estrutura" class="nav-link"><i class="fa-solid fa-hospital"></i> Nossa Clínica</a>
+      <a href="#sobre" class="nav-link"><i class="fa-solid fa-user-doctor"></i> Quem Somos</a>
+      <a href="#convenios" class="nav-link"><i class="fa-solid fa-id-card"></i> Convênios</a>
+      <a href="#faq" class="nav-link"><i class="fa-solid fa-circle-question"></i> Dúvidas</a>
+      <a href="#unidades" class="nav-link"><i class="fa-solid fa-location-dot"></i> Unidades</a>
+      <a href="#contato" class="nav-link"><i class="fa-solid fa-envelope"></i> Contato</a>
+    </div>
+
+    <!-- Rodapé do Menu Mobile com Contatos Rápidos -->
+    <div class="mobile-nav-footer">
+      <a href="https://api.whatsapp.com/send/?phone=555193674766&text=Ol%C3%A1,+gostaria+de+agendar+uma+consulta!" target="_blank" class="mobile-nav-zap-btn" rel="noopener">
+        <i class="fa-brands fa-whatsapp"></i> Agendar pelo WhatsApp
+      </a>
+      <div class="mobile-nav-phones">
+        <a href="tel:555130726262"><i class="fa-solid fa-phone"></i> Porto Alegre: (51) 3072-6262</a>
+        <a href="tel:555130374239"><i class="fa-solid fa-phone"></i> São Leopoldo: (51) 3037-4239</a>
+      </div>
+    </div>
+  </aside>
 
   <!-- ========================================================
        2. Destaque Principal & Especialidades
@@ -305,19 +318,19 @@
         <div class="atlas-top-bar">
           <div class="atlas-region-pills-row">
             <button type="button" class="atlas-region-pill active" data-region="tronco-coluna">
-              <i class="fa-solid fa-lungs"></i> Tronco &amp; Tórax (Músculos Profundos)
+              <i class="fa-solid fa-lungs"></i> <span class="pill-full">Tronco &amp; Tórax (Músculos Profundos)</span><span class="pill-short">Tronco</span>
             </button>
             <button type="button" class="atlas-region-pill" data-region="membros-inferiores">
-              <i class="fa-solid fa-person-walking"></i> Joelho &amp; Articulações (LCA)
+              <i class="fa-solid fa-person-walking"></i> <span class="pill-full">Joelho &amp; Articulações (LCA)</span><span class="pill-short">Joelho</span>
             </button>
             <button type="button" class="atlas-region-pill" data-region="coluna-vertebral">
-              <i class="fa-solid fa-bone"></i> Coluna, Discos &amp; Nervo Ciático
+              <i class="fa-solid fa-bone"></i> <span class="pill-full">Coluna, Discos &amp; Nervo Ciático</span><span class="pill-short">Coluna</span>
             </button>
             <button type="button" class="atlas-region-pill" data-region="membros-superiores">
-              <i class="fa-solid fa-hand"></i> Ombro &amp; Manguito Rotador
+              <i class="fa-solid fa-hand"></i> <span class="pill-full">Ombro &amp; Manguito Rotador</span><span class="pill-short">Ombro</span>
             </button>
             <button type="button" class="atlas-region-pill" data-region="cabeca-pescoco">
-              <i class="fa-solid fa-brain"></i> Cabeça, ATM &amp; Cervical
+              <i class="fa-solid fa-brain"></i> <span class="pill-full">Cabeça, ATM &amp; Cervical</span><span class="pill-short">Cabeça &amp; ATM</span>
             </button>
           </div>
 

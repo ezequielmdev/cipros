@@ -21,57 +21,70 @@ document.addEventListener('DOMContentLoaded', () => {
 function initMobileMenu() {
   const toggleBtn = document.getElementById('menu-toggle');
   const closeBtn = document.getElementById('mobile-nav-close');
-  const overlay = document.getElementById('site-nav-overlay');
-  const nav = document.getElementById('site-nav');
-  const links = document.querySelectorAll('.nav-link');
+  const overlay = document.getElementById('mobile-nav-overlay') || document.getElementById('site-nav-overlay');
+  const drawer = document.getElementById('mobile-nav-drawer') || document.getElementById('site-nav');
+  const links = document.querySelectorAll('.mobile-nav-links-wrap .nav-link, #site-nav .nav-link');
 
   function openMenu() {
-    if (!nav) return;
-    nav.classList.add('open');
+    if (!drawer) return;
+    drawer.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
     if (overlay) overlay.classList.add('active');
     document.body.classList.add('nav-drawer-open');
     if (toggleBtn) {
+      toggleBtn.setAttribute('aria-expanded', 'true');
       const icon = toggleBtn.querySelector('i');
       if (icon) icon.className = 'fa-solid fa-xmark';
     }
   }
 
   function closeMenu() {
-    if (!nav) return;
-    nav.classList.remove('open');
+    if (!drawer) return;
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
     if (overlay) overlay.classList.remove('active');
     document.body.classList.remove('nav-drawer-open');
     if (toggleBtn) {
+      toggleBtn.setAttribute('aria-expanded', 'false');
       const icon = toggleBtn.querySelector('i');
       if (icon) icon.className = 'fa-solid fa-bars';
     }
   }
 
-  if (toggleBtn && nav) {
-    toggleBtn.addEventListener('click', (e) => {
+  if (toggleBtn && drawer) {
+    const handleToggle = (e) => {
+      e.preventDefault();
       e.stopPropagation();
-      if (nav.classList.contains('open')) {
+      if (drawer.classList.contains('open')) {
         closeMenu();
       } else {
         openMenu();
       }
-    });
+    };
+
+    toggleBtn.addEventListener('click', handleToggle);
 
     if (closeBtn) {
       closeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
         e.stopPropagation();
         closeMenu();
       });
     }
 
     if (overlay) {
-      overlay.addEventListener('click', () => {
+      overlay.addEventListener('click', (e) => {
+        e.preventDefault();
         closeMenu();
       });
+      overlay.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        closeMenu();
+      }, { passive: false });
     }
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && nav.classList.contains('open')) {
+      if (e.key === 'Escape' && drawer.classList.contains('open')) {
         closeMenu();
       }
     });
@@ -165,7 +178,7 @@ function renderServices() {
       </div>
       <p class="service-card-desc">${serv.descricao}</p>
       <a href="${zapLink}" target="_blank" class="service-card-btn" rel="noopener">
-        <i class="fa-brands fa-whatsapp"></i> Agendar Tratamento
+        <i class="fa-brands fa-whatsapp"></i> <span class="btn-text-full">Agendar Tratamento</span><span class="btn-text-short">Agendar</span>
       </a>
     `;
     container.appendChild(card);

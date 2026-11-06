@@ -131,10 +131,36 @@ button, input, textarea, select {
   transform: scale(1.03);
 }
 
-.site-nav {
+.site-nav,
+.desktop-nav {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.desktop-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.mobile-nav-drawer,
+.mobile-nav-overlay {
+  display: none;
+}
+
+/* Helpers de Texto Curto / Completo para Responsividade */
+.pill-full,
+.btn-text-full,
+.ca-hint-full,
+.flip-text-full {
+  display: inline;
+}
+.pill-short,
+.btn-text-short,
+.ca-hint-short,
+.flip-text-short {
+  display: none;
 }
 
 .nav-link {
@@ -2823,8 +2849,9 @@ body.nav-drawer-open {
   .brand-logo-img {
     height: 50px;
   }
+  .desktop-nav,
   .header-cta-btn {
-    display: none;
+    display: none !important;
   }
   .header-mobile-actions {
     display: flex;
@@ -2862,47 +2889,84 @@ body.nav-drawer-open {
     border-radius: var(--radius-md);
     color: var(--primary-blue);
     font-size: 20px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .menu-toggle-btn:active {
+    background: #e2e8f0;
   }
 
-  /* Drawer de Navegação Mobile */
+  /* Drawer de Navegação Mobile (Fix Imagem 3: Posicionado diretamente no body) */
+  .mobile-nav-drawer,
   .site-nav {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 320px;
-    max-width: 86vw;
-    background: #ffffff;
-    z-index: 10001;
-    transform: translateX(100%);
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: -10px 0 35px rgba(0, 0, 0, 0.25);
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 0;
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: auto !important;
+    width: 310px !important;
+    max-width: 86vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    background: #ffffff !important;
+    z-index: 100001 !important;
+    transform: translateX(100%) !important;
+    transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-shadow: -10px 0 35px rgba(0, 0, 0, 0.28) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 0 !important;
   }
+  .mobile-nav-drawer.open,
   .site-nav.open {
-    transform: translateX(0);
+    transform: translateX(0) !important;
   }
 
   /* Backdrop Overlay */
+  .mobile-nav-overlay,
   .site-nav-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(15, 23, 42, 0.6);
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    background: rgba(15, 23, 42, 0.65) !important;
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
-    z-index: 10000;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    display: block;
+    z-index: 100000 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.3s ease !important;
+    display: block !important;
   }
+  .mobile-nav-overlay.active,
   .site-nav-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  body.nav-drawer-open {
+    overflow: hidden !important;
+    touch-action: none;
+  }
+
+  /* Helpers de Texto Mobile: esconde versão longa, exibe compacta */
+  .pill-full,
+  .btn-text-full,
+  .ca-hint-full,
+  .flip-text-full {
+    display: none !important;
+  }
+  .pill-short,
+  .btn-text-short,
+  .ca-hint-short,
+  .flip-text-short {
+    display: inline !important;
   }
 
   /* Cabeçalho do Drawer */
@@ -3095,35 +3159,101 @@ body.nav-drawer-open {
     padding: 22px 20px;
   }
 
-  /* Serviços & Filtros com Scroll Horizontal App-Style */
+  /* Fix Imagem 1: Filtros de Categoria em 2 Linhas Limpas e 100% Visíveis */
   .services-filter-row {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-    padding: 4px 16px 12px 16px;
-    margin: 0 -16px 28px -16px;
-    gap: 8px;
-    justify-content: flex-start;
-    scrollbar-width: none;
-  }
-  .services-filter-row::-webkit-scrollbar {
-    display: none;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    overflow-x: visible !important;
+    padding: 0 !important;
+    margin: 0 auto 20px auto !important;
+    gap: 8px 6px !important;
+    max-width: 100% !important;
   }
   .filter-pill-btn {
-    flex-shrink: 0;
-    scroll-snap-align: start;
-    white-space: nowrap;
-    font-size: 12.5px;
-    padding: 8px 16px;
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+    font-size: 11.5px !important;
+    padding: 7px 13px !important;
+    border-radius: 999px !important;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   }
+
+  /* Fix Imagem 4: Grid de Serviços Lado a Lado (2 Colunas Compactas e Minimizadas) */
   .services-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
   }
   .service-card {
-    padding: 22px 20px;
+    padding: 12px 10px !important;
+    border-radius: 14px !important;
+    min-height: 195px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+  }
+  .service-card-top {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+    margin-bottom: 6px !important;
+  }
+  .service-icon-box {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    font-size: 14px !important;
+    border-radius: 8px !important;
+  }
+  .service-tag {
+    font-size: 8.5px !important;
+    line-height: 1.1 !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.2px !important;
+    margin-bottom: 2px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100% !important;
+    display: block !important;
+  }
+  .service-card-title {
+    font-size: 12.5px !important;
+    line-height: 1.25 !important;
+    font-weight: 700 !important;
+    min-height: 32px !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    margin-bottom: 0 !important;
+  }
+  .service-card-desc {
+    font-size: 10px !important;
+    line-height: 1.35 !important;
+    color: #64748b !important;
+    margin-bottom: 8px !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    flex: 1 !important;
+  }
+  .service-card-btn {
+    padding: 7px 6px !important;
+    font-size: 10.5px !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    text-align: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    white-space: nowrap !important;
+  }
+  .service-card-btn i {
+    font-size: 12px !important;
   }
 
   /* Banner Curvado */
@@ -3141,67 +3271,106 @@ body.nav-drawer-open {
     border-radius: 18px;
   }
 
-  /* Atlas 3D Interativo Mobile */
+  /* Fix Imagem 2: Atlas 3D Interativo Mobile Ajustado */
   .atlas-section {
-    padding: 50px 0;
+    padding: 40px 0 !important;
   }
   .atlas-container-card {
-    padding: 20px 14px;
-    border-radius: 20px;
+    padding: 16px 10px !important;
+    border-radius: 20px !important;
   }
   .atlas-region-pills-row {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-    padding: 4px 14px 10px 14px;
-    margin: 0 -14px 16px -14px;
-    gap: 8px;
-    justify-content: flex-start;
-    scrollbar-width: none;
-  }
-  .atlas-region-pills-row::-webkit-scrollbar {
-    display: none;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    overflow-x: visible !important;
+    padding: 0 !important;
+    margin: 0 0 12px 0 !important;
+    gap: 6px !important;
   }
   .atlas-region-pill {
-    flex-shrink: 0;
-    scroll-snap-align: start;
-    white-space: nowrap;
-    font-size: 12px;
-    padding: 8px 14px;
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+    font-size: 11.5px !important;
+    padding: 7px 11px !important;
+    border-radius: 999px !important;
+  }
+  .atlas-region-pill i {
+    font-size: 12px !important;
+    margin-right: 2px !important;
   }
   .atlas-top-bar {
     flex-direction: column;
     align-items: stretch;
-    gap: 12px;
-    margin-bottom: 16px;
+    gap: 10px;
+    margin-bottom: 12px;
   }
   .atlas-search-container {
-    width: 100%;
+    width: 100% !important;
   }
   .atlas-3d-workspace {
-    height: 440px;
-    border-radius: 18px;
-    margin-bottom: 24px;
+    height: 370px !important;
+    border-radius: 18px !important;
+    margin-bottom: 18px !important;
+    position: relative !important;
+    overflow: hidden !important;
   }
   .atlas-layers-shelf {
-    display: none;
+    display: none !important;
   }
   .ca-flip-control-bar {
-    top: 10px;
-    padding: 4px 8px;
-    gap: 6px;
-    max-width: 95%;
+    top: 8px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    padding: 4px 8px !important;
+    gap: 5px !important;
+    max-width: 96% !important;
+    width: auto !important;
+    white-space: nowrap !important;
   }
   .ca-side-pill {
-    font-size: 11px;
-    padding: 5px 12px;
+    font-size: 11px !important;
+    padding: 5px 9px !important;
+  }
+  .ca-zoom-toolbar {
+    bottom: 8px !important;
+    right: 8px !important;
+    padding: 3px 6px !important;
+    gap: 3px !important;
+    z-index: 20 !important;
+  }
+  .ca-zoom-btn {
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 12px !important;
+  }
+  .ca-zoom-level {
+    font-size: 10px !important;
+    min-width: 30px !important;
   }
   .ca-hint-badge {
-    font-size: 10px;
-    padding: 4px 12px;
-    bottom: 10px;
+    bottom: 8px !important;
+    left: 8px !important;
+    right: auto !important;
+    max-width: calc(100% - 130px) !important;
+    font-size: 9.5px !important;
+    padding: 4px 8px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    z-index: 15 !important;
+  }
+  /* Remove a imagem estática do joelho que ficava embaixo do 3D poluindo a tela mobile */
+  .atlas-region-media {
+    display: none !important;
+  }
+  .atlas-region-hero {
+    flex-direction: column !important;
+    padding: 16px 14px !important;
+    gap: 12px !important;
+  }
+  .atlas-region-title {
+    font-size: 18px !important;
   }
   .atlas-inspector-panel {
     width: 100%;
@@ -3226,10 +3395,9 @@ body.nav-drawer-open {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
-  .atlas-region-hero {
-    flex-direction: column-reverse;
-    padding: 22px 18px;
-    gap: 18px;
+  .atlas-pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
   }
   .atlas-region-media {
     width: 100%;
@@ -3376,19 +3544,42 @@ body.nav-drawer-open {
 
 @media (max-width: 520px) {
   .container {
-    padding: 0 16px;
+    padding: 0 14px;
   }
   .atlas-3d-workspace {
-    height: 400px;
+    height: 360px !important;
   }
   .ca-flip-control-bar {
-    top: 8px;
-    padding: 3px 6px;
-    gap: 4px;
+    top: 6px !important;
+    padding: 3px 6px !important;
+    gap: 4px !important;
   }
   .ca-side-pill {
-    font-size: 10.5px;
-    padding: 4px 10px;
+    font-size: 10.5px !important;
+    padding: 4px 8px !important;
+  }
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+  .service-card {
+    padding: 10px 8px !important;
+    border-radius: 12px !important;
+    min-height: 185px !important;
+  }
+  .service-card-title {
+    font-size: 11.5px !important;
+    min-height: 30px !important;
+  }
+  .service-card-desc {
+    font-size: 9.5px !important;
+    line-height: 1.3 !important;
+    margin-bottom: 6px !important;
+    -webkit-line-clamp: 3 !important;
+  }
+  .service-card-btn {
+    padding: 6px 4px !important;
+    font-size: 10px !important;
   }
   .convenios-grid {
     grid-template-columns: repeat(2, 1fr);

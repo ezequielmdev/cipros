@@ -728,7 +728,7 @@
             <i class="fa-solid fa-user"></i> Frente
           </button>
           <button type="button" id="btn-flip-360" class="ca-side-pill ca-flip-btn" title="Girar para o Outro Lado (360°)">
-            <i class="fa-solid fa-arrows-rotate"></i> Girar para o Outro Lado
+            <i class="fa-solid fa-arrows-rotate"></i> <span class="flip-text-full">Girar para o Outro Lado</span><span class="flip-text-short">Girar 360°</span>
           </button>
           <button type="button" id="btn-side-costas" class="ca-side-pill" title="Ver Costas / Posterior">
             <i class="fa-solid fa-user-injured"></i> Costas
@@ -754,7 +754,7 @@
 
         <!-- Crachá de Guia Interativo -->
         <div class="ca-hint-badge">
-          <i class="fa-solid fa-arrows-rotate"></i> Arraste para os lados para girar e ver o outro lado • Clique nos pontos para inspecionar
+          <i class="fa-solid fa-arrows-rotate"></i> <span class="ca-hint-full">Arraste para os lados para girar e ver o outro lado • Clique nos pontos para inspecionar</span><span class="ca-hint-short">Toque nos pontos para diagnóstico</span>
         </div>
 
       </div>
