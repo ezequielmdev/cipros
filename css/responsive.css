@@ -1,0 +1,151 @@
+/* ========================================================
+   CIPROS - Adaptação Responsiva para Dispositivos Móveis
+   ======================================================== */
+
+@media (max-width: 860px) {
+  .home-showcase {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .carousel-card {
+    max-width: 320px;
+  }
+
+  .science-column {
+    max-width: 600px;
+    align-items: center;
+  }
+
+  .video-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .mid-banner-row {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .trabalhe-conosco-card {
+    justify-content: center;
+  }
+
+  .localizacao-frame {
+    grid-template-columns: 1fr;
+  }
+
+  .quem-somos-card {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .qs-text-box p {
+    text-align: justify;
+  }
+
+  .convenio-slot {
+    flex: 0 0 calc(100% / 3);
+  }
+
+  .instalacoes-preview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 580px) {
+  .top-bar {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
+
+  .top-bar-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .top-bar-links a {
+    margin: 0 6px;
+  }
+
+  .logo-image {
+    max-width: 240px;
+  }
+
+  .site-nav {
+    gap: 6px;
+  }
+
+  .nav-pill-btn {
+    padding: 3px 12px;
+    font-size: 11.5px;
+  }
+
+  .intro-statement {
+    font-size: 12px;
+    text-align: justify;
+  }
+
+  .convenio-slot {
+    flex: 0 0 calc(100% / 2);
+    min-width: 120px;
+    height: 75px;
+  }
+
+  .form-row-2 {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .contato-wrapper {
+    padding: 16px 14px;
+  }
+
+  .unidade-map-img-box {
+    height: 240px;
+  }
+
+  .unidade-map-overlay {
+    position: relative;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    box-shadow: none;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0;
+  }
+
+  .instalacoes-preview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .servicos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Responsividade do Atlas Anatômico */
+  .atlas-quad-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .atlas-region-header {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .atlas-search-box {
+    width: 100%;
+  }
+
+  .atlas-tabs-container {
+    justify-content: center;
+  }
+
+  .atlas-card-footer {
+    flex-direction: column;
+    text-align: center;
+  }
+}
