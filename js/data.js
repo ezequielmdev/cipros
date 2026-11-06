@@ -60,7 +60,7 @@ const CIPROS_DATA = {
       titulo: 'Coluna Vertebral & RPG',
       tag: 'Reeducação Postural Global',
       icone: 'fa-child-reaching',
-      descricao: 'Abordagem especializada para o alívio definitivo de dores na coluna, hérnias discais, lombalgias, ciatalgias e desvios posturais (escoliose, hipercifose). A RPG atua no alongamento das cadeias musculares retraídas e no fortalecimento dos músculos posturais profundos.'
+      descricao: 'Abordagem especializada para o tratamento e manejo de dores na coluna, hérnias discais, lombalgias, ciatalgias e desvios posturais (escoliose, hipercifose). A RPG atua no alongamento das cadeias musculares retraídas e no fortalecimento dos músculos posturais profundos.'
     },
     {
       id: 'fisiatria-medica',
@@ -74,9 +74,9 @@ const CIPROS_DATA = {
       id: 'fisioterapia-esportiva',
       categoria: 'esporte',
       titulo: 'Fisioterapia Esportiva & Cinemática',
-      tag: 'Prevenção & Alta Performance',
+      tag: 'Prevenção & Rendimento',
       icone: 'fa-person-running',
-      descricao: 'Voltada para atletas amadores e profissionais. Foco na recuperação acelerada de lesões musculares e articulares, prevenção de recidivas, análise biomecânica do gesto esportivo e treino sensório-motor para retorno seguro e sem dor aos treinos.'
+      descricao: 'Voltada para atletas amadores e profissionais. Foco na recuperação de lesões musculares e articulares, prevenção de recidivas, análise biomecânica do gesto esportivo e treino sensório-motor para retorno seguro e gradual às atividades esportivas.'
     },
     {
       id: 'pilates-clinico',
@@ -106,9 +106,9 @@ const CIPROS_DATA = {
       id: 'liberacao-miofascial',
       categoria: 'terapias',
       titulo: 'Liberação Miofascial & Terapia Manual',
-      tag: 'Eliminação de Pontos-Gatilho',
+      tag: 'Alívio de Pontos-Gatilho',
       icone: 'fa-hand-dots',
-      descricao: 'Terapia manual intensiva para eliminar nódulos musculares dolorosos (trigger points) e tensões profundas na fáscia muscular. Proporciona alívio imediato da rigidez corporal, melhora a circulação local e devolve a mobilidade.'
+      descricao: 'Terapia manual especializada voltada à liberação de nódulos musculares dolorosos (trigger points) e redução de tensões profundas na fáscia muscular. Proporciona alívio da rigidez corporal, melhora a circulação local e favorece a mobilidade.'
     },
     {
       id: 'fisioterapia-neurologica',
@@ -129,11 +129,11 @@ const CIPROS_DATA = {
     {
       id: 'eletroterapia-tens-fes',
       categoria: 'terapias',
-      titulo: 'Eletroterapia Avançada: Equipamentos TENS e FES (FENS)',
-      tag: 'Alta Tecnologia Analgésica & Motora',
+      titulo: 'Eletroterapia: Equipamentos TENS e FES (FENS)',
+      tag: 'Recurso Eletrofísico Analgésico & Motor',
       icone: 'fa-bolt-lightning',
       imagem: 'assets/images/eletroterapia_tens_fes.jpg',
-      descricao: 'Trabalhamos com equipamentos de última geração em TENS (Neuroestimulação Elétrica Transcutânea para alívio imediato e potente de dores crônicas, agudas e pós-operatórias) e FES/FENS (Estimulação Elétrica Funcional para fortalecimento muscular, reversão de atrofia e recuperação neuromuscular).'
+      descricao: 'Utilização de recursos eletrofísicos em TENS (Neuroestimulação Elétrica Transcutânea para auxílio no controle de dores crônicas, agudas e pós-operatórias) e FES/FENS (Estimulação Elétrica Funcional para fortalecimento muscular e recuperação neuromuscular).'
     },
     {
       id: 'palmilhas-posturais',
@@ -149,7 +149,7 @@ const CIPROS_DATA = {
   faq: [
     {
       pergunta: 'É obrigatório apresentar encaminhamento médico para iniciar o tratamento?',
-      resposta: 'Não! De acordo com as resoluções vigentes do Conselho Federal de Fisioterapia e Terapia Ocupacional (COFFITO), o fisioterapeuta é um profissional de primeiro contato, plenamente capacitado para realizar a avaliação diagnóstica cinesiológico-funcional e prescrever o tratamento adequado. Caso você já possua exames de imagem ou laudos médicos, eles são muito bem-vindos para complementar a avaliação.'
+      resposta: 'De acordo com as resoluções vigentes do Conselho Federal de Fisioterapia e Terapia Ocupacional (COFFITO), o fisioterapeuta é um profissional de primeiro contato, capacitado para realizar a avaliação diagnóstica cinesiológico-funcional e prescrever o plano de tratamento fisioterapêutico. Caso você já possua encaminhamento, exames de imagem ou laudos médicos, eles são muito bem-vindos e integrados à sua avaliação.'
     },
     {
       pergunta: 'A clínica aceita convênios médicos?',

@@ -699,7 +699,7 @@ button, input, textarea, select {
 }
 
 /* ========================================================
-   Atlas Anatômico Clínico 3D da CIPROS (Estilo Complete Anatomy)
+   Atlas Anatômico Clínico 3D da CIPROS
    ======================================================== */
 .atlas-section {
   background: #ffffff;
@@ -821,7 +821,7 @@ button, input, textarea, select {
   background: rgba(56, 189, 248, 0.15);
 }
 
-/* O Palco 3D Completo (Complete Anatomy Viewport) */
+/* O Palco 3D Completo (Atlas Interativo Viewport) */
 .atlas-3d-workspace {
   position: relative;
   height: 620px;
@@ -848,7 +848,7 @@ button, input, textarea, select {
   position: relative;
 }
 
-/* Complete Anatomy Medical Stage */
+/* Palco Médico 3D */
 .complete-anatomy-stage {
   position: relative;
   width: 100%;
@@ -982,7 +982,7 @@ button, input, textarea, select {
   pointer-events: auto;
 }
 
-/* Pins Interativos Estilo Complete Anatomy */
+/* Pins Interativos do Atlas */
 .ca-pin {
   position: absolute;
   transform: translate(-50%, -50%);
@@ -1328,7 +1328,7 @@ button, input, textarea, select {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Painel Prontuário Anatômico Lateral (Inspector - Complete Anatomy) */
+/* Painel Prontuário Anatômico Lateral (Inspector Biomecânico) */
 .atlas-inspector-panel {
   position: absolute;
   top: 14px;

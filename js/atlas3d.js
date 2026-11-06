@@ -1,5 +1,5 @@
 /**
- * CIPROS 3D Anatomical Atlas - Complete Anatomy Multi-Angle Edition
+ * CIPROS 3D Anatomical Atlas - Multi-Angle Interactive Edition
  * Visualizador anatômico de alta definição médica com rotação 360° (Frente e Costas / Outro Lado),
  * visualização dos lobos cerebrais (Frontal, Temporal, Parietal, Occipital),
  * zoom interativo, dissecação por camadas e prontuário biomecânico clínico.
@@ -209,7 +209,7 @@
       icone: 'fa-brain',
       descricao: 'Abriga o Córtex Somatossensorial Primário (giro pós-central), onde o cérebro processa o mapa do próprio corpo (homúnculo de Penfield), registrando toque, pressão, temperatura e dor.',
       biomecanica: 'Informa ao sistema motor a posição exata de cada articulação no espaço em milissegundos (propriocepção consciente).',
-      patologias: 'Dores crônicas com sensibilização central (onde o cérebro superinterpreta a dor mesmo após a cura do tecido), síndrome da dor regional complexa e perda da percepção postural.',
+      patologias: 'Dores crônicas com sensibilização central (onde o cérebro superinterpreta a dor mesmo após a cicatrização do tecido), síndrome da dor regional complexa e perda da percepção postural.',
       tratamentoCipros: 'Dessensibilização somatossensorial, terapia espelho, TENS em frequências moduladas para reprogramação neural da dor e treino de propriocepção.'
     },
     'lobo-occipital': {
