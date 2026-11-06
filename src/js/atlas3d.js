@@ -858,10 +858,7 @@
       pin.innerHTML = `
         <div class="ca-pin-beacon"></div>
         <div class="ca-pin-core"></div>
-        <div class="ca-pin-tag">
-          <span class="ca-tag-name">${spot.label}</span>
-          <span class="ca-tag-action" role="button" tabindex="0">Sobre esta parte <i class="fa-solid fa-arrow-right"></i></span>
-        </div>
+        <div class="ca-pin-tag">${spot.label}</div>
       `;
 
       // Clicar na bolinha apenas seleciona o ponto (NÃO abre automaticamente o laudo, evitando ser chato)
@@ -874,15 +871,6 @@
           selectStructure(spot.id, false);
         }
       });
-
-      // Clicar no rótulo ou no botão "Sobre esta parte" abre o laudo completo
-      const tagEl = pin.querySelector('.ca-pin-tag');
-      if (tagEl) {
-        tagEl.addEventListener('click', (e) => {
-          e.stopPropagation();
-          selectStructure(spot.id, true);
-        });
-      }
 
       layer.appendChild(pin);
     });

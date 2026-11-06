@@ -1091,17 +1091,19 @@ button, input, textarea, select {
   background: rgba(16, 185, 129, 0.45);
 }
 
-/* Rótulo Flutuante do Pin (Exibido sob demanda com botão "Sobre esta parte") */
+/* Rótulo Flutuante do Pin (Exibe apenas o nome da estrutura selecionada) */
 .ca-pin-tag {
   position: absolute;
-  left: 24px;
+  left: 20px;
   top: 50%;
   transform: translateY(-50%);
   background: rgba(11, 23, 42, 0.94);
-  border: 1px solid rgba(56, 189, 248, 0.45);
+  border: 1px solid rgba(56, 189, 248, 0.5);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   color: #ffffff;
+  font-size: 11.5px;
+  font-weight: 700;
   padding: 5px 12px;
   border-radius: 999px;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.65);
@@ -1111,10 +1113,8 @@ button, input, textarea, select {
   visibility: hidden;
   transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
   z-index: 12;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
   white-space: nowrap;
+  line-height: 1.25;
 }
 
 .ca-pin:hover .ca-pin-tag,
@@ -1129,47 +1129,12 @@ button, input, textarea, select {
 
 .pin-align-right .ca-pin-tag {
   left: auto;
-  right: 24px;
-  flex-direction: row-reverse;
+  right: 20px;
 }
 
 .pin-align-left .ca-pin-tag {
-  left: 24px;
+  left: 20px;
   right: auto;
-  flex-direction: row;
-}
-
-.ca-tag-name {
-  font-size: 11.5px;
-  font-weight: 700;
-  color: #ffffff;
-  line-height: 1.25;
-  white-space: nowrap;
-}
-
-.ca-tag-action {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 10px;
-  font-weight: 700;
-  color: #ffffff;
-  background: linear-gradient(135deg, #0284c7 0%, #005ba9 100%);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  padding: 3px 9px;
-  border-radius: 999px;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.35);
-}
-
-.ca-pin.active .ca-tag-action,
-.ca-pin-tag:hover .ca-tag-action {
-  color: #ffffff;
-  background: #10b981;
-  border-color: #10b981;
-  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.6);
-  transform: scale(1.02);
 }
 
 /* Controles de Zoom Flutuantes */
@@ -3415,50 +3380,36 @@ body.nav-drawer-open {
     width: 38px !important;
     height: 38px !important;
   }
-  /* Mobile: Apenas o pino ativo mostra rótulo com botão "Sobre esta parte" */
+  /* Mobile: Apenas o pino ativo mostra rótulo simples com o nome */
   .ca-pin-tag {
-    font-size: 10px !important;
-    padding: 5px 8px !important;
-    max-width: 145px !important;
-    min-width: 115px !important;
-    border-radius: 10px !important;
+    font-size: 10.5px !important;
+    font-weight: 700 !important;
+    padding: 4px 10px !important;
+    max-width: 140px !important;
+    border-radius: 999px !important;
     text-align: center !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.75) !important;
     opacity: 0 !important;
     visibility: hidden !important;
     pointer-events: auto !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 3px !important;
     cursor: pointer;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: block !important;
   }
   .ca-pin.active .ca-pin-tag {
     opacity: 1 !important;
     visibility: visible !important;
     z-index: 30 !important;
   }
-  .ca-tag-name {
-    font-size: 10px !important;
-    line-height: 1.2 !important;
-    white-space: normal !important;
-    text-align: center !important;
-    display: block !important;
-  }
-  .ca-tag-action {
-    font-size: 8.5px !important;
-    padding: 2px 7px !important;
-    margin: 0 auto !important;
-  }
   .pin-align-right .ca-pin-tag {
     left: auto !important;
     right: 16px !important;
-    align-items: center !important;
   }
   .pin-align-left .ca-pin-tag {
     left: 16px !important;
     right: auto !important;
-    align-items: center !important;
   }
   .atlas-layers-shelf {
     display: none !important;
