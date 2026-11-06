@@ -832,6 +832,12 @@
     const layer = document.getElementById('ca-hotspots-layer');
     if (!layer || !vista.hotspots) return;
 
+    // Se nenhuma estrutura desta vista estiver selecionada, seleciona a primeira da lista
+    const hasSelected = vista.hotspots.some(s => s.id === State.selectedStructure);
+    if (!hasSelected && vista.hotspots.length > 0) {
+      State.selectedStructure = vista.hotspots[0].id;
+    }
+
     layer.innerHTML = '';
     vista.hotspots.forEach(spot => {
       // Filtrar por sistema se não for 'todos'
@@ -840,8 +846,9 @@
       }
 
       const isRightSide = spot.x > 50;
+      const isActive = spot.id === State.selectedStructure;
       const pin = document.createElement('div');
-      pin.className = `ca-pin ${spot.id === State.selectedStructure ? 'active' : ''} pin-sistema-${spot.sistema} ${isRightSide ? 'pin-align-right' : 'pin-align-left'}`;
+      pin.className = `ca-pin ${isActive ? 'active' : ''} pin-sistema-${spot.sistema} ${isRightSide ? 'pin-align-right' : 'pin-align-left'}`;
       pin.style.left = `${spot.x}%`;
       pin.style.top = `${spot.y}%`;
       pin.setAttribute('data-id', spot.id);
@@ -860,6 +867,8 @@
 
       layer.appendChild(pin);
     });
+
+    updateHintBadge();
   }
 
   // Seleciona uma estrutura anatômica e abre o Prontuário Lateral
@@ -883,8 +892,18 @@
       }
     });
 
+    updateHintBadge();
+
     // Atualiza o Inspector Panel (Prontuário)
     updateInspectorPanel(item, shouldOpenPanel);
+  }
+
+  function updateHintBadge() {
+    const hint = document.querySelector('.ca-hint-badge');
+    if (!hint) return;
+    const item = CLINICAL_DATABASE[State.selectedStructure];
+    const name = item ? item.nome : 'Estrutura Anatômica';
+    hint.innerHTML = `<i class="fa-solid fa-bullseye"></i> <span class="ca-hint-full">Estrutura: <strong>${name}</strong> • Toque para diagnóstico</span><span class="ca-hint-short"><strong>${name}</strong></span>`;
   }
 
   // Preenche o Prontuário Anatômico Lateral (Inspector Panel)
@@ -1114,6 +1133,16 @@
         State.zoom = 1.0;
         State.pan = { x: 0, y: 0 };
         updateTransform();
+      });
+    }
+
+    // Crachá de Dica clicável para abrir diagnóstico
+    const hintBadge = document.querySelector('.ca-hint-badge');
+    if (hintBadge) {
+      hintBadge.addEventListener('click', () => {
+        if (State.selectedStructure) {
+          selectStructure(State.selectedStructure, true);
+        }
       });
     }
 
