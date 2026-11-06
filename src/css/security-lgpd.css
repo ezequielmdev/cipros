@@ -15,6 +15,26 @@
   tab-index: -1 !important;
 }
 
+/* Proteções Ativas Anti-Plágio e Anti-Arrasto de Imagens */
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+.brand-logo-img,
+.convenio-card img,
+.atlas-container,
+.hero-slider-wrap,
+.unidade-img-wrap {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 /* ========================================================
    1. Banner de Consentimento de Cookies (LGPD)
    ======================================================== */

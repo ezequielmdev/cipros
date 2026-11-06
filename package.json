@@ -1,0 +1,13 @@
+{
+  "name": "cipros-website",
+  "version": "1.0.0",
+  "description": "Website Oficial CIPROS Fisioterapia e Fisiatria",
+  "author": "Ezequiel Marques <ezequielmarquesc@gmail.com>",
+  "scripts": {
+    "build": "node scripts/build.js"
+  },
+  "devDependencies": {
+    "clean-css-cli": "^5.6.3",
+    "terser": "^5.51.2"
+  }
+}
