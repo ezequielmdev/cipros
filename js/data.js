@@ -176,7 +176,8 @@ const CIPROS_DATA = {
   // Convênios Atendidos (Ordem exata da Imagem Oficial da Clínica)
   convenios: [
     { nome: 'Walmart (AMA)', logo: 'assets/convenios/convenio_walmart.png', desc: 'AMA' },
-    { nome: 'Amil / Medial Saúde', logo: 'assets/convenios/convenio_amil_medial.png', desc: 'Medial Saúde' },
+    { nome: 'Amil', logo: 'assets/convenios/convenio_amil.png', desc: 'Amil Assistência Médica' },
+    { nome: 'Medial Saúde', logo: 'assets/convenios/convenio_medial_saude.png', desc: 'Medial Saúde' },
     { nome: 'ASSEFAZ', logo: 'assets/convenios/convenio_assefaz.png', desc: 'Fundação Assefaz' },
     { nome: 'CASSI', logo: 'assets/convenios/convenio_cassi.png', desc: 'Banco do Brasil' },
     { nome: 'AFMPA', logo: 'assets/convenios/convenio_afm.png', desc: 'Assoc. Funcionários Municipais Porto Alegre' },
