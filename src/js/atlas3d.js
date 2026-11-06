@@ -714,6 +714,8 @@
     renderStageUI(container);
     setupEvents();
     loadView(State.currentRegion, State.currentSide);
+    const panel = document.getElementById('atlas-inspector-panel');
+    if (panel) panel.classList.remove('open');
     selectStructure(State.selectedStructure, false);
   }
 
@@ -1006,8 +1008,6 @@
 
     if (shouldOpenPanel) {
       panel.classList.add('open');
-    } else {
-      panel.classList.remove('open');
     }
 
     // Botão Fechar
