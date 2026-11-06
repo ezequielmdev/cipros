@@ -16,31 +16,69 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ========================================================
-   1. Menu Mobile
+   1. Menu Mobile (Drawer & Backdrop)
    ======================================================== */
 function initMobileMenu() {
   const toggleBtn = document.getElementById('menu-toggle');
+  const closeBtn = document.getElementById('mobile-nav-close');
+  const overlay = document.getElementById('site-nav-overlay');
   const nav = document.getElementById('site-nav');
   const links = document.querySelectorAll('.nav-link');
 
-  if (toggleBtn && nav) {
-    toggleBtn.addEventListener('click', () => {
-      nav.classList.toggle('open');
+  function openMenu() {
+    if (!nav) return;
+    nav.classList.add('open');
+    if (overlay) overlay.classList.add('active');
+    document.body.classList.add('nav-drawer-open');
+    if (toggleBtn) {
       const icon = toggleBtn.querySelector('i');
-      if (icon) {
-        if (nav.classList.contains('open')) {
-          icon.className = 'fa-solid fa-xmark';
-        } else {
-          icon.className = 'fa-solid fa-bars';
-        }
+      if (icon) icon.className = 'fa-solid fa-xmark';
+    }
+  }
+
+  function closeMenu() {
+    if (!nav) return;
+    nav.classList.remove('open');
+    if (overlay) overlay.classList.remove('active');
+    document.body.classList.remove('nav-drawer-open');
+    if (toggleBtn) {
+      const icon = toggleBtn.querySelector('i');
+      if (icon) icon.className = 'fa-solid fa-bars';
+    }
+  }
+
+  if (toggleBtn && nav) {
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (nav.classList.contains('open')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeMenu();
+      });
+    }
+
+    if (overlay) {
+      overlay.addEventListener('click', () => {
+        closeMenu();
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.classList.contains('open')) {
+        closeMenu();
       }
     });
 
     links.forEach(link => {
       link.addEventListener('click', () => {
-        nav.classList.remove('open');
-        const icon = toggleBtn.querySelector('i');
-        if (icon) icon.className = 'fa-solid fa-bars';
+        closeMenu();
       });
     });
   }

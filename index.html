@@ -39,26 +39,60 @@
 
       <!-- Menu de Navegação -->
       <nav class="site-nav" id="site-nav" aria-label="Navegação Principal">
-        <a href="#topo" class="nav-link active">Início</a>
-        <a href="#servicos" class="nav-link">Serviços</a>
-        <a href="#atlas" class="nav-link">Atlas 3D</a>
-        <a href="#estrutura" class="nav-link">Nossa Clínica</a>
-        <a href="#sobre" class="nav-link">Quem Somos</a>
-        <a href="#convenios" class="nav-link">Convênios</a>
-        <a href="#faq" class="nav-link">Dúvidas</a>
-        <a href="#unidades" class="nav-link">Unidades</a>
-        <a href="#contato" class="nav-link">Contato</a>
+        <!-- Topo exclusivo do Menu Mobile -->
+        <div class="mobile-nav-header">
+          <div class="mobile-nav-brand">
+            <img src="assets/logo/cipros_logo.png" alt="CIPROS" class="mobile-nav-logo">
+            <span class="mobile-nav-subtitle">Fisioterapia &amp; Fisiatria</span>
+          </div>
+          <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Fechar menu">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Links Principais -->
+        <div class="mobile-nav-links-wrap">
+          <a href="#topo" class="nav-link active"><i class="fa-solid fa-house"></i> Início</a>
+          <a href="#servicos" class="nav-link"><i class="fa-solid fa-notes-medical"></i> Serviços</a>
+          <a href="#atlas" class="nav-link"><i class="fa-solid fa-cube"></i> Atlas 3D</a>
+          <a href="#estrutura" class="nav-link"><i class="fa-solid fa-hospital"></i> Nossa Clínica</a>
+          <a href="#sobre" class="nav-link"><i class="fa-solid fa-user-doctor"></i> Quem Somos</a>
+          <a href="#convenios" class="nav-link"><i class="fa-solid fa-id-card"></i> Convênios</a>
+          <a href="#faq" class="nav-link"><i class="fa-solid fa-circle-question"></i> Dúvidas</a>
+          <a href="#unidades" class="nav-link"><i class="fa-solid fa-location-dot"></i> Unidades</a>
+          <a href="#contato" class="nav-link"><i class="fa-solid fa-envelope"></i> Contato</a>
+        </div>
+
+        <!-- Rodapé do Menu Mobile com Contatos Rápidos -->
+        <div class="mobile-nav-footer">
+          <a href="https://api.whatsapp.com/send/?phone=555193674766&text=Ol%C3%A1,+gostaria+de+agendar+uma+consulta!" target="_blank" class="mobile-nav-zap-btn" rel="noopener">
+            <i class="fa-brands fa-whatsapp"></i> Agendar pelo WhatsApp
+          </a>
+          <div class="mobile-nav-phones">
+            <a href="tel:555130726262"><i class="fa-solid fa-phone"></i> Porto Alegre: (51) 3072-6262</a>
+            <a href="tel:555130374239"><i class="fa-solid fa-phone"></i> São Leopoldo: (51) 3037-4239</a>
+          </div>
+        </div>
       </nav>
 
-      <!-- Botão de Ação / WhatsApp no Topo -->
+      <!-- Fundo Escurecido ao Abrir Menu Mobile (Backdrop Overlay) -->
+      <div class="site-nav-overlay" id="site-nav-overlay"></div>
+
+      <!-- Botão de Ação / WhatsApp no Topo (Desktop) -->
       <a href="https://api.whatsapp.com/send/?phone=555193674766&text=Ol%C3%A1,+gostaria+de+agendar+uma+consulta!" target="_blank" class="header-cta-btn" rel="noopener">
         <i class="fa-brands fa-whatsapp"></i> Agendar Consulta
       </a>
 
-      <!-- Botão Hamburguer Mobile -->
-      <button class="menu-toggle-btn" id="menu-toggle" aria-label="Abrir menu">
-        <i class="fa-solid fa-bars"></i>
-      </button>
+      <!-- Ações Mobile no Topo (Botão Rápido WhatsApp + Hamburguer) -->
+      <div class="header-mobile-actions">
+        <a href="https://api.whatsapp.com/send/?phone=555193674766&text=Ol%C3%A1,+gostaria+de+agendar+uma+consulta!" target="_blank" class="mobile-quick-zap" rel="noopener" aria-label="Chamar no WhatsApp">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>Agendar</span>
+        </a>
+        <button class="menu-toggle-btn" id="menu-toggle" aria-label="Abrir menu de navegação">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
     </div>
   </header>
 
