@@ -415,7 +415,12 @@ def build_pdf():
     pay_terms = [
         [
             Paragraph("<b>FORMA DE PAGAMENTO:</b>", body_style),
-            Paragraph("<b>PIX ou Transferência Bancária</b><br/>• Opção à vista: <b>R$ 1.200,00</b><br/>• Ou 2 parcelas de <b>R$ 600,00</b> (Entrada + 30 dias)", body_style)
+            Paragraph(
+                "<b>PIX ou Transferência Bancária</b><br/>"
+                "• Opção à vista: <b>R$ 1.200,00</b> | Ou 2 parcelas de <b>R$ 600,00</b> (Entrada + 30 dias)<br/>"
+                "• <b>Chaves PIX:</b> <font color='#059669'><b>ezequielmarquesco@gmail.com</b></font> ou <font color='#059669'><b>51992582525</b></font> ((51) 99258-2525)",
+                body_style
+            )
         ],
         [
             Paragraph("<b>ENTREGA &amp; TRANSIÇÃO:</b>", body_style),
@@ -431,16 +436,16 @@ def build_pdf():
         ('BACKGROUND', (0,0), (-1,-1), colors.HexColor("#f8fafc")),
         ('BOX', (0,0), (-1,-1), 1, colors.HexColor("#cbd5e1")),
         ('INNERGRID', (0,0), (-1,-1), 0.5, colors.HexColor("#e2e8f0")),
-        ('TOPPADDING', (0,0), (-1,-1), 7),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 7),
+        ('TOPPADDING', (0,0), (-1,-1), 6),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 6),
         ('LEFTPADDING', (0,0), (-1,-1), 10),
         ('RIGHTPADDING', (0,0), (-1,-1), 10),
     ]))
     story.append(t_pay)
-    story.append(Spacer(1, 15))
+    story.append(Spacer(1, 12))
 
     # Bloco de Contato do Desenvolvedor
-    story.append(Paragraph("Dados de Contato do Desenvolvedor", h2_style))
+    story.append(Paragraph("Dados de Contato &amp; Pagamento do Desenvolvedor", h2_style))
     dev_box = [
         [
             Paragraph("<b>Nome:</b>", body_style),
@@ -451,7 +456,11 @@ def build_pdf():
             Paragraph("ezequielmarquesc@gmail.com", body_style)
         ],
         [
-            Paragraph("<b>Portfólio / Demonstração CIPROS:</b>", body_style),
+            Paragraph("<b>Chaves PIX:</b>", body_style),
+            Paragraph("<font color='#059669'><b>ezequielmarquesco@gmail.com</b></font> ou <font color='#059669'><b>51992582525</b></font>", body_bold)
+        ],
+        [
+            Paragraph("<b>Portfólio / Demonstração:</b>", body_style),
             Paragraph("<font color='#005ba9'><u>https://ezequielmdev.github.io/cipros/</u></font>", body_bold)
         ]
     ]
@@ -460,13 +469,13 @@ def build_pdf():
         ('BACKGROUND', (0,0), (-1,-1), colors.white),
         ('BOX', (0,0), (-1,-1), 1, colors.HexColor("#0284c7")),
         ('INNERGRID', (0,0), (-1,-1), 0.5, colors.HexColor("#e0f2fe")),
-        ('TOPPADDING', (0,0), (-1,-1), 6),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 6),
+        ('TOPPADDING', (0,0), (-1,-1), 5),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 5),
         ('LEFTPADDING', (0,0), (-1,-1), 10),
         ('RIGHTPADDING', (0,0), (-1,-1), 10),
     ]))
     story.append(t_dev)
-    story.append(Spacer(1, 20))
+    story.append(Spacer(1, 16))
 
     # Termo de Aceite Formal
     story.append(Paragraph("Termo de Aceite da Proposta", h2_style))

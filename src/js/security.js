@@ -153,82 +153,11 @@
     });
   }
 
-  // 6. Proteção Ativa Anti-Plágio e Anti-Inspeção (Deixar o mínimo visível e bloquear cópia não autorizada)
-  function initAntiPlagiarism() {
-    // A. Bloqueio de Menu de Contexto (Botão Direito) para evitar inspeção e salvar mídia
-    document.addEventListener('contextmenu', function (e) {
-      if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) {
-        return;
-      }
-      e.preventDefault();
-      return false;
-    }, { capture: true });
-
-    // B. Bloqueio de Atalhos de Teclado de Inspeção e Extração de Código
-    document.addEventListener('keydown', function (e) {
-      const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
-      const cmdOrCtrl = isMac ? e.metaKey : e.ctrlKey;
-
-      // F12 (DevTools)
-      if (e.keyCode === 123 || e.key === 'F12') {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
-      }
-
-      // Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C (Inspect / Console / Selector)
-      if (cmdOrCtrl && e.shiftKey && (
-        e.key === 'I' || e.key === 'i' ||
-        e.key === 'J' || e.key === 'j' ||
-        e.key === 'C' || e.key === 'c'
-      )) {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
-      }
-
-      // Ctrl+U (Exibir Código Fonte da Página)
-      if (cmdOrCtrl && (e.key === 'u' || e.key === 'U')) {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
-      }
-
-      // Ctrl+S (Salvar Página Completa no Disco)
-      if (cmdOrCtrl && (e.key === 's' || e.key === 'S')) {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
-      }
-    }, { capture: true });
-
-    // C. Bloqueio de Arrastar Imagens (Protege logos, atlas e fotos contra cópia rápida)
-    document.addEventListener('dragstart', function (e) {
-      if (e.target && e.target.nodeName === 'IMG') {
-        e.preventDefault();
-        return false;
-      }
-    }, { capture: true });
-
-    // D. Limpeza do Console e Aviso Legal Institucional
-    try {
-      console.clear();
-      const styleTitle = 'color: #005ba9; font-size: 15px; font-weight: bold; font-family: sans-serif;';
-      const styleBody = 'color: #334155; font-size: 11px; font-family: sans-serif; line-height: 1.4;';
-      const styleWarn = 'color: #dc2626; font-size: 11px; font-weight: bold; font-family: sans-serif;';
-
-      console.log('%c🛡️ CIPROS Fisioterapia & Fisiatria — Código Protegido', styleTitle);
-      console.log('%cEste website, suas animações, visualizador 3D e recursos são protegidos por direitos autorais, desenvolvidos exclusivamente por Ezequiel Marques para a CIPROS Centro de Reabilitação Ltda.', styleBody);
-      console.log('%c⚠️ A reprodução, clonagem, raspagem ou engenharia reversa não autorizada é proibida (Leis nº 9.609/98 e 9.610/98).', styleWarn);
-    } catch (err) {}
-  }
-
   // Inicialização
   function init() {
     initFrameProtection();
     sanitizeExternalLinks();
     setupHoneypots();
-    initAntiPlagiarism();
     BotDetector.check();
   }
 
